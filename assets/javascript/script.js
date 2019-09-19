@@ -31,11 +31,13 @@ console.log(questions[0].a[0]);
 console.log(currentQuestion);
 
 function writeQuestion(){
+    $("#q").empty()
     $("#q").text(questions[currentQuestion].text);
     anySelected = false;
 };
 
 function writeAnswers(){
+    $("#a").empty()
     for(i=0;i<questions[currentQuestion].a.length;i++){
     var answerDiv = $("<div>");
     answerDiv.attr("id",i);
@@ -45,18 +47,23 @@ function writeAnswers(){
     };
 };
 
-function correct(){
-    correct++;
+function score(a){
+    (a)++;
     currentQuestion++;
     writeQuestion();
     writeAnswers();
-
+    game();
 }
+
 
 writeQuestion();
 writeAnswers();
+game();
+
+function game(){
 
 $(".answerDiv").click(function(){
+    console.log("click")
     $(".answerDiv").attr("class","answerDiv")
     selectedAnswer = this
     console.log(selectedAnswer)
@@ -70,7 +77,9 @@ $(".answerDiv").click(function(){
 $("#s").click(function(){
     if(anySelected){
         if(selectedAnswer.id === questions[currentQuestion].correctA){
-            console.log("Correct!")
+            console.log("Correct!");
+            score(correct);
+            console.log(correct)
         }
         else{
             console.log("WRONG")
@@ -79,3 +88,4 @@ $("#s").click(function(){
     }
 
 });
+};

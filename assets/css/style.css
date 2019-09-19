@@ -3,11 +3,23 @@
 }
 
 #q {
-    background-color: red;
+    background-image: url("../images/birch.jpg");
+    background-position: center;
     height: 100px;
 }
 
 #a {
-    background-color: blue;
+    background-color: rgb(142, 211, 145);
     height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.answerDiv {
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    background-color: white;
 }

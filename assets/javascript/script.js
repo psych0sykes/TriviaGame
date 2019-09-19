@@ -32,9 +32,17 @@ function writeAnswers(x){
     answerDiv.attr("selected",false);
     answerDiv.attr("class","answerDiv");
     answerDiv.text(questions[currentQuestion].a[x]);
-    $("#a").append(questions[currentQuestion].a[x]);
+    $("#a").append(answerDiv);
 };
 
 writeQuestion();
 writeAnswers(0);
-    
+writeAnswers(1);
+
+$(".answerDiv").click(function(){
+    $(".answerDiv").attr("selected",false)
+    selectedAnswer = this
+    console.log(selectedAnswer)
+    $(selectedAnswer).attr("selected",true)
+
+});

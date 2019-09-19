@@ -1,6 +1,11 @@
 .margin {
     background-color: yellow;
 }
+.flex {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 
 #q {
     background-image: url("../images/birch.jpg");
@@ -11,10 +16,14 @@
 #a {
     background-color: rgb(142, 211, 145);
     height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+}
+#s {
+    background-color: rgb(102, 72, 32);
+    color: white;
+}
+#s:hover {
+    background-color: rgb(194, 160, 115);
+    color: black;
 }
 
 .answerDiv {
@@ -22,4 +31,7 @@
     width: 250px;
     height: 50px;
     background-color: white;
+}
+.selected {
+    background-color: rgb(241, 240, 139);
 }

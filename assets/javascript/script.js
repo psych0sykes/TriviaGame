@@ -18,21 +18,21 @@ var questions = [
         "correctA": "0"
     },
     q3 = {
-        "text": "question 1",
+        "text": "question 2",
         "a": [  "answer 0",
                 "answer 1",
                 "answer 2"],
         "correctA": "0"
     },
     q4 = {
-        "text": "question 1",
+        "text": "question 3",
         "a": [  "answer 0",
                 "answer 1",
                 "answer 2"],
         "correctA": "0"
     },
     q5 = {
-        "text": "question 1",
+        "text": "question 4",
         "a": [  "answer 0",
                 "answer 1",
                 "answer 2"],
@@ -40,9 +40,9 @@ var questions = [
     },
     last = {
         "text": "this is the end",
-        "a": [  "correct",
-                "incorrect",
-                "unanswered"],
+        "a": [  "correct " + correct,
+                "incorrect " + incorrect,
+                "unanswered " + timeOut],
     }
 ];
 
@@ -52,8 +52,9 @@ var incorrect = 0;
 var timeOut = 0;
 var selectedAnswer;
 var anySelected = false;
+var intervalID = "null";
 var clockRunning = false;
-var clockTime = 10;
+var clockTime;
 
 console.log(questions[0].a[0]);
 
@@ -76,6 +77,16 @@ function writeAnswers(){
     };
 };
 
+function count(){
+    clockTime = clockTime - 1;
+    $("#timer").text(clockTime);
+    if(clockTime === 0){
+        alert("time is up!")
+        submit()
+    }
+
+}
+
 function score(x){
     switch(x){
         case 0:
@@ -91,7 +102,8 @@ function score(x){
     currentQuestion++;
     if(currentQuestion >= questions.length){
         console.log("END")
-        currentQuestion = 0;
+        clearInterval(intervalID);
+        $()
     }
     else {
     writeQuestion();
@@ -101,6 +113,7 @@ function score(x){
 }
 
 function submit (){
+    clearInterval(intervalID);
     if(anySelected){
         if(selectedAnswer.id === questions[currentQuestion].correctA){
             console.log("Correct!");
@@ -124,8 +137,14 @@ function submit (){
 
 writeQuestion();
 writeAnswers();
+clock();
 game();
 
+function clock(){
+    intervalId = setInterval(count, 1000);
+    console.log("START");
+    clearInterval(intervalID);
+};
 
 $("#s").click(function(){
     submit();
@@ -144,5 +163,6 @@ $(".answerDiv").click(function(){
     console.log(selectedAnswer.id)
     console.log(questions[currentQuestion].correctA)
 });
-
+clockTime = 11;
+clockRunning = true;
 };

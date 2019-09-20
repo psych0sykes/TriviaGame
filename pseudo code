@@ -14,3 +14,7 @@ left to do:
 add timer to game function
 
 if 10 seconds goes by then run submit function
+
+if question # = questions.length - 1 then run the scorecard function
+change submit text to "try again"
+disable select function

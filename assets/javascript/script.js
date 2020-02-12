@@ -13,39 +13,39 @@ var clockRunning = true;
 var clockTime = 11;
 var questions = [
     q0 = {
-        "text": "question 0",
-        "a": [  "answer 0",
-                "answer 1",
-                "answer 2"],
+        "text": "What color is lettuce?",
+        "a": [  "Green",
+                "Brown",
+                "Black"],
         "correctA": "0"
     },
     q1 = {
-        "text": "question 1",
-        "a": [  "answer 0",
-                "answer 1",
-                "answer 2"],
+        "text": "What should you put lettuce on?",
+        "a": [  "A burger",
+                "A peanut butter sandwitch",
+                "Spaghetti and Meatballz"],
         "correctA": "0"
     },
     q3 = {
-        "text": "question 2",
-        "a": [  "answer 0",
-                "answer 1",
-                "answer 2"],
-        "correctA": "0"
+        "text": "Why do we eat lettuce?",
+        "a": [  "For fat",
+                "For muscle",
+                "For mustache"],
+        "correctA": "2"
     },
     q4 = {
-        "text": "question 3",
-        "a": [  "answer 0",
-                "answer 1",
-                "answer 2"],
+        "text": "Where should I store my lettuce?",
+        "a": [  "In a basket",
+                "On your head",
+                "In the fridge"],
         "correctA": "0"
     },
     q5 = {
-        "text": "question 4",
-        "a": [  "answer 0",
-                "answer 1",
-                "answer 2"],
-        "correctA": "0"
+        "text": "Why lettuce?",
+        "a": [  "Because green",
+                "Because leaf",
+                "No more lettuce"],
+        "correctA": "2"
     },
     last = {
         "text": "this is the end",

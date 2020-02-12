@@ -2,6 +2,15 @@
 
 console.log("JS READY")
 
+var currentQuestion = 0;
+var correct = 0;
+var incorrect = 0;
+var timeOut = 0;
+var selectedAnswer;
+var anySelected = false;
+var intervalID = "null";
+var clockRunning = true;
+var clockTime = 11;
 var questions = [
     q0 = {
         "text": "question 0",
@@ -40,25 +49,14 @@ var questions = [
     },
     last = {
         "text": "this is the end",
-        "a": [  "correct " + correct,
-                "incorrect " + incorrect,
-                "unanswered " + timeOut],
-    }
+        a: [  "correct " + correct,
+            "incorrect " + incorrect,
+            "unanswered " + timeOut]}
 ];
 
-var currentQuestion = 0;
-var correct = 0;
-var incorrect = 0;
-var timeOut = 0;
-var selectedAnswer;
-var anySelected = false;
-var intervalID = "null";
-var clockRunning = false;
-var clockTime;
+// console.log(questions[0].a[0]);
 
-console.log(questions[0].a[0]);
-
-console.log(currentQuestion);
+// console.log(currentQuestion);
 
 function writeQuestion(){
     $("#q").empty()
@@ -67,6 +65,9 @@ function writeQuestion(){
 };
 
 function writeAnswers(){
+    questions[5].a = [  "correct " + correct,
+    "incorrect " + incorrect,
+    "unanswered " + timeOut]
     $("#a").empty()
     for(i=0;i<questions[currentQuestion].a.length;i++){
     var answerDiv = $("<div>");
@@ -78,13 +79,25 @@ function writeAnswers(){
 };
 
 function count(){
+    if(clockRunning === true){
     clockTime = clockTime - 1;
     $("#timer").text(clockTime);
     if(clockTime === 0){
         alert("time is up!")
         submit()
+        stopTime()
+    }
+    }else{
+        console.log("clock should be off")
     }
 
+}
+
+function stopTime(){
+    clockTime = 11;
+    console.log("clear")
+    clearInterval(intervalID);
+    clockRunning = false;
 }
 
 function score(x){
@@ -100,10 +113,10 @@ function score(x){
         break;
     };
     currentQuestion++;
+    console.log(currentQuestion)
     if(currentQuestion >= questions.length){
-        console.log("END")
-        clearInterval(intervalID);
-        $()
+        console.log("END");
+        stopTime();
     }
     else {
     writeQuestion();
@@ -113,56 +126,55 @@ function score(x){
 }
 
 function submit (){
-    clearInterval(intervalID);
+    stopTime()
     if(anySelected){
         if(selectedAnswer.id === questions[currentQuestion].correctA){
-            console.log("Correct!");
+            // console.log("Correct!");
             console.log(correct)
             score(0);
         }
         else{
-            console.log("WRONG")
+            // console.log("WRONG")
             console.log(incorrect)
             score(1);
         };
         
     }
     else {
-        console.log("unanswered");
+        // console.log("unanswered");
         console.log(timeOut);
         score(2)
     };
 };
 
-
-writeQuestion();
-writeAnswers();
-clock();
-game();
-
 function clock(){
+    if(clockRunning === true){
     intervalId = setInterval(count, 1000);
-    console.log("START");
-    clearInterval(intervalID);
+    console.log("START")
+    }
 };
 
 $("#s").click(function(){
     submit();
-    console.log("click")
+    // console.log("click")
 });
 
 function game(){
-
+    console.log(clockRunning)
+    clockRunning = true
 $(".answerDiv").click(function(){
-    console.log("click")
+    // console.log("click")
     $(".answerDiv").attr("class","answerDiv")
     selectedAnswer = this
-    console.log(selectedAnswer)
+    // console.log(selectedAnswer)
     $(selectedAnswer).addClass("selected")
     anySelected = true;
-    console.log(selectedAnswer.id)
-    console.log(questions[currentQuestion].correctA)
+    // console.log(selectedAnswer.id)
+    // console.log(questions[currentQuestion].correctA)
 });
-clockTime = 11;
-clockRunning = true;
 };
+
+writeQuestion();
+writeAnswers();
+game();
+clock();
